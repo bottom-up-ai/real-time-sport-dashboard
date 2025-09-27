@@ -1,0 +1,21 @@
+{
+	"name": "real-time-sport-dashboard-backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "./src/server.js",
+	"scripts": {
+		"dev": "cross-env NODE_ENV=development nodemon './src/server.ts'",
+		"build": "tsc"
+	},
+	"keywords": [],
+	"author": "Louis DANIEL",
+	"license": "ISC",
+	"packageManager": "pnpm@10.17.1",
+	"_moduleAliases": {
+		"@": "dist"
+	},
+	"engines": {
+		"node": ">=22.14.0",
+		"pnpm": ">=10.17.1"
+	}
+}
