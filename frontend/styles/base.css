@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+    font-family: 
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        Segoe UI,
+        Roboto,
+        Helvetica Neue,
+        Arial,
+        Noto Sans,
+        sans-serif,
+        Apple Color Emoji,
+        Segoe UI Emoji,
+        Segoe UI Symbol,
+        Noto Color Emoji
+    ;
+    color: var(--gray-12);
+	font-size: 1.6rem;
+    line-height: 1.3;
+    background-color: var(--color-background);
+
+	/* when modal is open to lock scrolling  */
+	margin-right: var(--removed-body-scroll-bar-size);
+
+	scroll-behavior: smooth;
+}
+
+b, strong {
+    font-weight: 700;
+}
+
+i {
+    font-style: italic;
+}
+
+.titleBig {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+@media screen and (max-width: 700px) {
+    html,
+    body {
+        overscroll-behavior-y: contain; /* prevent pull down to refresh page on mobile */
+    }
+}
+
+@media screen and (max-width: 400px) {
+	body {
+		font-size: 1.2rem;
+	}
+
+	.titleBig {
+		font-size: 2rem;
+		letter-spacing: -0.5px;
+	}
+}
