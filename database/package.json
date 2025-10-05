@@ -1,0 +1,31 @@
+{
+	"name": "real-time-sport-dashboard-database",
+	"version": "1.0.0",
+	"description": "",
+	"main": "",
+	"scripts": {
+		"new:migration": "cross-env pnpm kysely migrate:make migration --config './kysely.config.ts' --stub './template.js'"
+	},
+	"keywords": [],
+	"author": "Louis DANIEL",
+	"license": "ISC",
+	"packageManager": "pnpm@10.17.1",
+	"engines": {
+		"node": ">=22.14.0",
+		"pnpm": ">=10.17.1"
+	},
+	"dependencies": {
+		"@dotenvx/dotenvx": "^1.51.0",
+		"kysely": "^0.28.7",
+		"pg": "^8.16.3"
+	},
+	"devDependencies": {
+		"@types/node": "^24.6.2",
+		"@types/pg": "^8.15.5",
+		"cross-env": "^10.1.0",
+		"eslint": "^9.37.0",
+		"kysely-ctl": "^0.19.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.9.3"
+	}
+}
