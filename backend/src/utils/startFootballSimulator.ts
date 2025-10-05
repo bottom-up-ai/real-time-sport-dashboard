@@ -1,3 +1,10 @@
+import path from 'node:path';
+import * as dotenv from '@dotenvx/dotenvx';
+
+const dotenvConfig = dotenv.config({ path: path.join(__dirname, '..', '.env') });
+
+if (dotenvConfig.error) throw dotenvConfig.error;
+
 import { WebSocketServer } from "ws";
 
 const WEBSOCKET_SERVER_HOST = "localhost";
@@ -115,7 +122,7 @@ const startMatch = async () => {
 	}, 2_000);
 };
 
-function generateEvent(matchId: number, minute: number): MatchEvent | null {
+const generateEvent = (matchId: number, minute: number): MatchEvent | null => {
 	const events: (MatchEvent | null)[] = [
 		null,
 		{ type: "GOAL", team: "Liverpool", player: "Mohamed Salah", matchId, minute, createdAt: new Date().toISOString() },
