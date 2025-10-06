@@ -1,17 +1,27 @@
-import { Kysely, sql } from 'kysely';
+import type { Knex } from 'knex';
 
-exports.up = async (db: Kysely<any>): Promise<void> => {
-	await db.transaction().execute(async (trx) => {
-		await sql`
-			-- Your sql here
-		`.execute(trx);
-	});
+const sql = String.raw;
+
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+exports.up = async (knex: Knex) => {
+    await knex.raw(sql`
+        BEGIN;
+			-- your SQL here
+        COMMIT;
+    `);
 };
 
-exports.down = async (db: Kysely<any>): Promise<void> => {
-    await db.transaction().execute(async (trx) => {
-		await sql`
-			-- Your sql here
-		`.execute(trx);
-	});
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+exports.down = async (knex: Knex) => {
+    await knex.raw(sql`
+        BEGIN;
+			-- your SQL here
+        COMMIT;
+    `);
 };

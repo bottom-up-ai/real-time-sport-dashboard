@@ -1,3 +1,10 @@
+import path from 'node:path';
+import * as dotenv from '@dotenvx/dotenvx';
+
+const dotenvConfig = dotenv.config({ path: path.join(__dirname, '.env') });
+
+if (dotenvConfig.error) throw dotenvConfig.error;
+
 type EnvironmentAvailable = 'development' | 'production';
 
 const parseEnvVariable = (name: string) => {

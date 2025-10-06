@@ -11,8 +11,14 @@
         "skipLibCheck": true,
         "moduleResolution": "Node",
 		"baseUrl": ".",
+		"paths": {
+			"@/*": ["*"],
+		}
     },
     "include": [
-        "*",
+        "**/*",
     ],
+	"ts-node": {
+		"require": ["tsconfig-paths/register"] /* for absolute import */
+	}
 }
