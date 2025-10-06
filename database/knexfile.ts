@@ -12,7 +12,8 @@ module.exports = {
 	},
 	migrations: {
 		schemaName: envs.database.schema,
-		directory: './migrations'
+		directory: './migrations',
+		stub: './template.ts'
 	},
 	searchPath: [envs.database.schema],
 };
