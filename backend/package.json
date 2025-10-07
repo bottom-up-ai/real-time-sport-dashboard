@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development nodemon './src/server.ts'",
 		"build": "tsc",
-		"start:simulator": "cross-env pnpx ts-node './src/utils/startFootballSimulator.ts'"
+		"start:simulator": "cross-env pnpm ts-node './src/utils/startFootballSimulator.ts'"
 	},
 	"keywords": [],
 	"author": "Louis DANIEL",
