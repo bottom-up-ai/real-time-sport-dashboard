@@ -1,9 +1,7 @@
 import { envs } from '@/envs';
+import type { Knex } from 'knex';
 
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
-module.exports = {
+export default {
 	client: 'postgresql',
 	connection: envs.database.url,
 	pool: {
@@ -16,4 +14,4 @@ module.exports = {
 		stub: './template.ts'
 	},
 	searchPath: [envs.database.schema],
-};
+} as Knex.Config;

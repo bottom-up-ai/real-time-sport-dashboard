@@ -18,9 +18,13 @@ const parseEnvVariable = (name: string) => {
 };
 
 const environment = parseEnvVariable('NODE_ENV') as EnvironmentAvailable;
+const isProduction = environment === 'production';
+const isDevelopment = environment === 'development';
 
 export const envs = {
     environment,
+	isProduction,
+    isDevelopment,
     database: {
         url: parseEnvVariable('DATABASE_URL'),
         schema: parseEnvVariable('DATABASE_SCHEMA'),
