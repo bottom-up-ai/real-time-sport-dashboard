@@ -4,6 +4,10 @@ const name = process.argv[2];
 
 if (!name) throw new Error('Please provide a migration name');
 
-const command = `pnpm knex migrate:make ${name} -x ts --knexfile './../knexfile.ts'`;
+const command = [
+	`pnpm knex migrate:make ${name}`,
+	'-x ts',
+	`--knexfile './../knexfile.ts'`
+].join(' ');
 
 execSync(command, { stdio: 'inherit' });
