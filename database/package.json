@@ -3,15 +3,16 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "",
-	"scripts": {
-		"new:migration": "cross-env ts-node './scripts/create-migration-cli.ts'",
-		"run:latest:migration": "cross-env pnpm knex migrate:up --knexfile './knexfile.ts' && pnpm gen:types",
-		"run:all:migration": "cross-env pnpm knex migrate:latest --knexfile './knexfile.ts' && pnpm gen:types",
-		"rollback:latest:migration": "cross-env pnpm knex migrate:rollback --knexfile './knexfile.ts' && pnpm gen:types",
+	"cli": {
+		"new:migration": "cross-env ts-node './cli/create-migration.cli.ts'",
+		"run:latest:migration": "cross-env pnpm knex migrate:up --knexfile './knexfile.ts' && pnpm gen:types && pnpm dump:database",
+		"run:all:migration": "cross-env pnpm knex migrate:latest --knexfile './knexfile.ts' && pnpm gen:types && pnpm dump:database",
+		"rollback:latest:migration": "cross-env pnpm knex migrate:rollback --knexfile './knexfile.ts' && pnpm gen:types && pnpm dump:database",
 		"list:migration": "cross-env pnpm knex migrate:list --knexfile './knexfile.ts'",
-		"undo:latest:migration": "cross-env pnpm knex migrate:down --knexfile './knexfile.ts' && pnpm gen:types",
-		"reset:database": "cross-env ts-node './initial_migration.ts' && pnpm run:all:migration",
-		"gen:types": "cross-env ts-node './scripts/generate-types-cli.ts'"
+		"undo:latest:migration": "cross-env pnpm knex migrate:down --knexfile './knexfile.ts' && pnpm gen:types && pnpm dump:database",
+		"reset:database": "cross-env ts-node './initial_migration.ts' && pnpm run:all:migration && pnpm dump:database",
+		"gen:types": "cross-env ts-node './cli/generate-types.cli.ts'",
+		"dump:database": "cross-env ts-node './cli/dump-database-schema.cli.ts'"
 	},
 	"keywords": [],
 	"author": "Louis DANIEL",

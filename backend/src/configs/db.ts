@@ -1,28 +1,31 @@
-// import knex from 'knex';
-// import { envs } from '@/configs/envs';
-// import { logger } from '@/logs';
-// import { types } from 'pg';
+import { envs } from '@/configs/envs';
+import { logger } from '@/logs';
+import { Pool, types } from 'pg';
+import { Kysely, PostgresDialect, sql } from 'kysely';
 
-// /* 
-// 	Fix: currently "DATE" column types are returned as
-// 	javascript date object with date + time.
-// 	It fixes that by returning a string "YYYY-MM-DD" instead,
-// 	without any timezone, which matches the behavior from postgresql.
-// */
-// types.setTypeParser(types.builtins.DATE, (val) => val);
+export const db = new Kysely({
+	dialect: new PostgresDialect({
+		pool: new Pool({
+			connectionString: envs.database.url,
+			options: `-c search_path=${envs.database.schema}`
+		})
+	})
+});
 
-// export const db = knex({
-//     client: 'pg',
-//     connection: envs.database.url,
-//     searchPath: [envs.database.schema],
-//     pool: { min: 0, max: 10 },
-// });
+/* 
+	Fix: currently "DATE" column types are returned as
+	javascript date object with date + time.
+	It fixes that by returning a string "YYYY-MM-DD" instead,
+	without any timezone, which matches the behavior from postgresql.
+*/
+types.setTypeParser(types.builtins.DATE, (val) => val);
 
-// (async () => {
-//     try {
-//         await db.raw('SELECT 1');
-//         logger.info('Database connected');
-//     } catch (err) {
-//         logger.error({ msg: 'Database connection failed', err });
-//     }
-// })();
+/** Test connection. */
+(async () => {
+    try {
+		await sql`SELECT 1`.execute(db);
+        logger.info('Database connected');
+    } catch (err) {
+        logger.error({ msg: 'Database connection failed', err });
+    }
+})();
